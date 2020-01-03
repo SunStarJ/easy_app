@@ -8,7 +8,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/material_header.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../color_util.dart';
+import '../../../static_util.dart';
 
 class ChildPage extends StatefulWidget {
   int index;

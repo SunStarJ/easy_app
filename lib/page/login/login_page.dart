@@ -1,5 +1,5 @@
 import 'package:easy_app/base_file.dart';
-import 'package:easy_app/color_util.dart';
+import 'package:easy_app/static_util.dart';
 import 'package:easy_app/native/location_util.dart';
 import 'package:easy_app/page/login/login_bloc.dart';
 import 'package:easy_app/page/main/main_page.dart';

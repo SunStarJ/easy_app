@@ -8,7 +8,7 @@ import 'package:flutter_easyrefresh/easy_refresh.dart';
 import 'package:flutter_easyrefresh/material_header.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import '../../../color_util.dart';
+import '../../../static_util.dart';
 
 class TeacherPage extends StatefulWidget {
   @override

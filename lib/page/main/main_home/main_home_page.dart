@@ -1,5 +1,5 @@
 import 'package:easy_app/base_file.dart';
-import 'package:easy_app/color_util.dart';
+import 'package:easy_app/static_util.dart';
 import 'package:easy_app/page/main/main_home/tab_indicator.dart';
 import 'package:easy_app/page/view/banner_view.dart';
 import 'package:easy_app/page/view/message.dart';

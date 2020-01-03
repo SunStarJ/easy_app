@@ -1,5 +1,5 @@
 import 'package:easy_app/base_file.dart';
-import 'package:easy_app/color_util.dart';
+import 'package:easy_app/static_util.dart';
 import 'package:easy_app/page/card_buy/card_buy_page.dart';
 import 'package:easy_app/page/lesson_info/lesson_info_page.dart';
 import 'package:easy_app/page/teacher_info/teacher_info_page.dart';

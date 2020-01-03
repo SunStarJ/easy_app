@@ -1,5 +1,5 @@
 import 'package:easy_app/base_file.dart';
-import 'package:easy_app/color_util.dart';
+import 'package:easy_app/static_util.dart';
 import 'package:easy_app/page/order_check/order_check_bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -157,11 +157,67 @@ class OrderCheck extends BaseStatelessPage {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   ),
                   padding: EdgeInsets.all(10),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  margin: EdgeInsets.only(top: 10),
+                  color: ColorUtil.bodyColor,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Text("备注"),
+                      Row(
+                        children: <Widget>[
+                          Text("口味偏好等要求", style: TextStyle(color: Colors.grey)),
+                          Icon(
+                            Icons.chevron_right,
+                            color: Colors.black,
+                          )
+                        ],
+                      )
+                    ],
+                  ),
                 )
               ],
             ),
           ),
-        ))
+        )),
+        Container(
+          color: Colors.black54,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      "￥37.85",
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10),
+                      child: Text(
+                        "已减10.11元",
+                        style: TextStyle(color: Colors.grey, fontSize: 12),
+                      ),
+                    )
+                  ],
+                ),
+                margin: EdgeInsets.only(left: 10),
+              ),
+              GestureDetector(
+                child: Container(
+                  color: Colors.blueAccent,
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+                  child: Text(
+                    "立即支付",
+                    style: TextStyle(color: Colors.white, fontSize: 16),
+                  ),
+                ),
+              )
+            ],
+          ),
+        )
       ],
     );
   }
@@ -170,8 +226,10 @@ class OrderCheck extends BaseStatelessPage {
   createItem() => Container(
         padding: EdgeInsets.all(10),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Container(
+              margin: EdgeInsets.only(right: 5),
               height: 50,
               width: 50,
               child: ClipRRect(
@@ -184,7 +242,21 @@ class OrderCheck extends BaseStatelessPage {
                   ),
                 ),
               ),
-            )
+            ),
+            Expanded(child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[Text("测试商品"), Text("￥12.22")],
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ),
+                Container(height:5,),
+                Row(
+                  children: <Widget>[Text("×1",style: TextStyle(color: Colors.grey),), Text("￥12.22",style: TextStyle(decoration: TextDecoration.lineThrough,fontSize: 10,color: Colors.grey),)],
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                )
+              ],
+            ),flex: 1,)
+
           ],
         ),
         color: ColorUtil.bodyColor,

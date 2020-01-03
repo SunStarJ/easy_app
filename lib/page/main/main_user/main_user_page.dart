@@ -1,5 +1,5 @@
 import 'package:easy_app/base_file.dart';
-import 'package:easy_app/color_util.dart';
+import 'package:easy_app/static_util.dart';
 import 'package:easy_app/page/shop_info/shop_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

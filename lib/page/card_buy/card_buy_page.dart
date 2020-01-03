@@ -1,10 +1,11 @@
 import 'package:easy_app/base_file.dart';
+import 'package:easy_app/page/card_buy/order_info.dart';
 import 'package:easy_app/util.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../../color_util.dart';
+import '../../static_util.dart';
 
 class CardBuyPage extends BaseStatelessPage {
   String heroTag = "";
@@ -228,10 +229,12 @@ class CardBuyPage extends BaseStatelessPage {
                     color: Colors.blueAccent,
                     child: Text(
                       "立即购买",
-                      style: TextStyle(color: Colors.white,fontSize: 16),
+                      style: AppStyle.BtnTextStyle,
                     ),
                   ),
-                  onTap: () {},
+                  onTap: () {
+                    startPage(CardOrderInfo());
+                  },
                 ),
                 flex: 1,
               )
@@ -267,7 +270,7 @@ class CardBuyPage extends BaseStatelessPage {
         ],
       ),
       margin: EdgeInsets.only(top: 10),
-      color: Colors.white,
+      color: ColorUtil.bodyColor,
     );
   }
 

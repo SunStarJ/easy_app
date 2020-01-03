@@ -1,4 +1,5 @@
 import 'package:easy_app/base_file.dart';
+import 'package:easy_app/page/image_scan/iamge_scan_page.dart';
 import 'package:easy_app/util.dart';
 import 'package:easy_app/view/customer_view.dart';
 import 'package:flutter/cupertino.dart';
@@ -170,18 +171,20 @@ class LessonInfoPage extends BaseStatelessPage {
                 scrollDirection: Axis.horizontal,
                 shrinkWrap: true,
                 itemCount: 5,
-                itemBuilder: (ctx, index) => Container(
-                      child: ConstrainedBox(
-                        constraints: BoxConstraints.expand(),
-                        child: Image.network(
-                          "https://s.yimg.com/ny/api/res/1.2/wEAfOfb.K0xbhO9pqMb.qA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9ODAw/https://media.zenfs.com/en/evergreen.ttvc.com.tw/7c0a895009c9ada304ce44225f8e5b48",
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      width: 120,
-                      height: 80,
-                      margin: EdgeInsets.only(right: 5),
-                    )),
+                itemBuilder: (ctx, index) => GestureDetector(child: Container(
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints.expand(),
+                    child: Image.network(
+                      "https://s.yimg.com/ny/api/res/1.2/wEAfOfb.K0xbhO9pqMb.qA--~A/YXBwaWQ9aGlnaGxhbmRlcjtzbT0xO3c9ODAw/https://media.zenfs.com/en/evergreen.ttvc.com.tw/7c0a895009c9ada304ce44225f8e5b48",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  width: 120,
+                  height: 80,
+                  margin: EdgeInsets.only(right: 5),
+                ),onTap: (){
+                  startPage(ImageScanPage());
+                },) ),
           ),
           createTitleInfo("训练效果",
               "测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据测试数据"),
