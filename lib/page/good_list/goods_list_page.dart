@@ -228,7 +228,7 @@ class GoodListPage extends BaseStatelessPage {
                               ),
                               padding: EdgeInsets.only(bottom: 10),
                               decoration: BoxDecoration(
-                                  color: Colors.white,
+                                  color: ColorUtil.bodyColor,
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(5),
                                       topRight: Radius.circular(5))),

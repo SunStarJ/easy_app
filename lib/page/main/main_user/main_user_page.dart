@@ -1,9 +1,13 @@
 import 'package:easy_app/base_file.dart';
+import 'package:easy_app/page/qr/qr_scan.dart';
+import 'package:easy_app/page/user/user_info/user_info_page.dart';
+import 'package:easy_app/page/user/wallet/wallet_page.dart';
 import 'package:easy_app/static_util.dart';
 import 'package:easy_app/page/shop_info/shop_info.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
 
 class MainUserPage extends BaseStatelessPage {
   List<String> controlString = [
@@ -39,29 +43,43 @@ class MainUserPage extends BaseStatelessPage {
                     crossAxisCount: 3,
                     mainAxisSpacing: 5,
                     crossAxisSpacing: 10),
-                itemBuilder: (ctx, index) => Container(
-                      child: Container(
-                        margin: EdgeInsets.all(2),
-                        decoration: BoxDecoration(color: ColorUtil.bodyColor,borderRadius: BorderRadius.circular(2),boxShadow: [BoxShadow(
-                            color: Colors.grey.withAlpha(50),
-                            offset: Offset(1, 1),
-                            spreadRadius: 1,
-                            blurRadius:8)]),
-                        child: Center(
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: <Widget>[
-                              Icon(
-                                Icons.map,
-                                color: Colors.blue,
-                              ),
-                              Container(height: 5,),
-                              Text(controlString[index],)
-                            ],
+                itemBuilder: (ctx, index) => GestureDetector(child: Container(
+                  child: Container(
+                    margin: EdgeInsets.all(2),
+                    decoration: BoxDecoration(color: ColorUtil.bodyColor,borderRadius: BorderRadius.circular(2),boxShadow: [BoxShadow(
+                        color: Colors.grey.withAlpha(50),
+                        offset: Offset(1, 1),
+                        spreadRadius: 1,
+                        blurRadius:8)]),
+                    child: Center(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                          Icon(
+                            Icons.map,
+                            color: Colors.blue,
                           ),
-                        ),
+                          Container(height: 5,),
+                          Text(controlString[index],)
+                        ],
                       ),
-                    )),
+                    ),
+                  ),
+                ),onTap: () async{
+                  switch(index){
+                    case 3:
+                      startPage(QrScanPage());
+//                      String qrResult = await MajaScan.startScan(
+//                          title: “QRcode scanner”,
+//                          barColor: Colors.red,
+//                          titleColor: Colors.green,
+//                          qRCornerColor: Colors.blue,
+//                          qRScannerColor: Colors.deepPurple,
+//                          flashlightEnable: true
+//                      );
+                      break;
+                  }
+                },behavior: HitTestBehavior.translucent,) ),
             padding: EdgeInsets.all(10),
           ),
           flex: 1,
@@ -77,9 +95,9 @@ class MainUserPage extends BaseStatelessPage {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          Row(
+          GestureDetector(child:Row(
             children: <Widget>[
-              Container(
+              Hero(tag: "info_header", child: Container(
                 margin: EdgeInsets.only(right: 10),
                 height: 60,
                 width: 60,
@@ -93,17 +111,17 @@ class MainUserPage extends BaseStatelessPage {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(100),
                     border: Border.all(color: Colors.white, width: 3)),
-              ),
+              )) ,
               Expanded(
                 child: Container(
                   height: 60,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
+                      Hero(tag: "nick_name", child: Text(
                         "小妖怪",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
-                      ),
+                        style:Theme.of(basePageContext).textTheme.body2.copyWith(color: Colors.white,fontSize: 16),
+                      )) ,
                       GestureDetector(
                         child: Row(
                           children: <Widget>[
@@ -118,7 +136,7 @@ class MainUserPage extends BaseStatelessPage {
                             Text(
                               "石家庄月野兔总店",
                               style:
-                                  TextStyle(color: Colors.white, fontSize: 12),
+                              TextStyle(color: Colors.white, fontSize: 12),
                             )
                           ],
                         ),
@@ -138,7 +156,9 @@ class MainUserPage extends BaseStatelessPage {
                 color: Colors.white,
               )
             ],
-          ),
+          ) ,behavior: HitTestBehavior.translucent,onTap: (){
+            startPage(UserInfoPage());
+          },) ,
           Container(
             height: 20,
           ),
@@ -147,7 +167,9 @@ class MainUserPage extends BaseStatelessPage {
               FlatButton(
                 highlightColor: Colors.transparent,
                 splashColor: Colors.transparent,
-                onPressed: () {},
+                onPressed: () {
+                  startPage(WalletPage());
+                },
                 child: Text("余额：￥0.00"),
                 textColor: Colors.white,
               ),

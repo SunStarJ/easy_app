@@ -1,12 +1,34 @@
 import 'package:easy_app/page/login/login_page.dart';
 import 'package:easy_app/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_easyrefresh/easy_refresh.dart';
 
 void main() => runApp(MyApp());
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyApp extends StatefulWidget{
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return _MyAppState();
+  }
+}
+
+class _MyAppState extends State<MyApp> {
+
+
+
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    MethodChannel("message").invokeMethod("getInitMessage").then((messageData){
+      print(messageData["message"]);
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -28,4 +50,5 @@ class MyApp extends StatelessWidget {
       home: LoginPagePage(),
     );
   }
+
 }
