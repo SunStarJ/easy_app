@@ -26,6 +26,10 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'kotlin-android-extensions'
 
+def keystorePropertiesFile = rootProject.file("key.properties")
+def keystoreProperties = new Properties()
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
 android {
     compileSdkVersion 28
 
@@ -50,13 +54,48 @@ android {
 //            abiFilters 'armeabi'
 //            abiFilters 'x86'
 //        }
+//        ndk {
+//            abiFilters "armeabi"  // 保留这种架构的CPU
+//        }
+    }
+
+    signingConfigs{
+        release{
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+            storeFile file(keystoreProperties['storeFile'])
+            storePassword keystoreProperties['storePassword']
+        }
     }
 
     buildTypes {
+
+//        debug{
+//            minifyEnabled true
+//            //打开资源压缩
+//            shrinkResources true
+//            //不显示log
+//            buildConfigField "boolean", "LOG_DEBUG", "true"
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            signingConfig signingConfigs.release
+//            ndk {
+//                abiFilters "armeabi" // 保留这种架构的CPU
+//            }
+//        }
+
         release {
             // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+            //打开混淆
+            minifyEnabled true
+            //打开资源压缩
+            shrinkResources true
+            //不显示log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            ndk {
+                abiFilters "armeabi-v7a" // 保留这种架构的CPU
+            }
         }
     }
 }

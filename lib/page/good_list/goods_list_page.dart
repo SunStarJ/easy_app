@@ -575,7 +575,6 @@ class _HeaderViewState extends State<HeaderView> {
     // TODO: implement initState
     super.initState();
     widget._linkHeaderNotifier.addListener(() {
-      print("top:${widget._linkHeaderNotifier.pulledExtent}");
       setState(() {});
     });
   }

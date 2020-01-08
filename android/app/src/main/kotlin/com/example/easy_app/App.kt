@@ -9,6 +9,7 @@ import com.umeng.message.PushAgent
 import com.umeng.message.UmengNotificationClickHandler
 import com.umeng.message.entity.UMessage
 import io.flutter.app.FlutterApplication
+import io.flutter.plugin.common.EventChannel
 
 class App:FlutterApplication() {
     override fun onCreate() {
@@ -41,10 +42,11 @@ class App:FlutterApplication() {
                 }
             })
             ///设置点击获取数据
-            setNotificationClickHandler { context, uMessage ->
+           setNotificationClickHandler { context, uMessage ->
                 uMessage?.extra?.keys?.forEach {
                     Log.i("umeng",it)
                 }
+                Message.instance.sendMessage()
             }
         }
 

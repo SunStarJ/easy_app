@@ -1,3 +1,4 @@
+import 'package:easy_app/native/message_util.dart';
 import 'package:easy_app/page/login/login_page.dart';
 import 'package:easy_app/theme.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _MyAppState extends State<MyApp> {
     MethodChannel("message").invokeMethod("getInitMessage").then((messageData){
       print(messageData["message"]);
     });
+
   }
 
 

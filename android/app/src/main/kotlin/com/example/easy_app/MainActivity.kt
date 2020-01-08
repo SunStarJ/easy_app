@@ -33,6 +33,7 @@ class MainActivity : FlutterActivity() {
                 }
             }
         }
+        Message.instance.initChannel(this,flutterEngine.dartExecutor);
         mapView =  MapViewFactory(flutterEngine.dartExecutor, bundle, flutterEngine.dartExecutor.binaryMessenger)
         flutterEngine.platformViewsController.registry.registerViewFactory("com.example.easy_app.map/mapView",mapView)
         GeneratedPluginRegistrant.registerWith(flutterEngine);

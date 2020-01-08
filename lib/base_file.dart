@@ -92,12 +92,12 @@ abstract class BaseState<T extends StatefulWidget> extends State<T>  with  Autom
       appBar: !showAppBar()
           ? null
           : initAppBar() == null
-              ? AppBar(
-                  centerTitle: true,
-                  title: Text(initAppName()),
-                  actions: initActions(),
-                )
-              : initAppBar(),
+          ? AppBar(
+        centerTitle: true,
+        title: Text(initAppName()),
+        actions: initActions(),
+      )
+          : initAppBar(),
       body: initChild(),
     );
   }

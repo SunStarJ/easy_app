@@ -1,4 +1,5 @@
 import 'package:easy_app/base_file.dart';
+import 'package:easy_app/native/message_util.dart';
 import 'package:easy_app/page/good_list/goods_list_page.dart';
 import 'package:easy_app/page/main/main_bloc.dart';
 import 'package:easy_app/page/main/main_home/main_home_page.dart';
@@ -24,6 +25,7 @@ class MainPage extends BaseStatelessPage {
 
   @override
   Widget initChild() {
+    NativeMessageUtil.initMessageChannel(basePageContext);
     pages = [HomePage(), MainOrderPage(), MainUserPage()];
     return Scaffold(
       body: StreamBuilder<int>(
