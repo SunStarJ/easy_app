@@ -29,6 +29,19 @@ class GoodListPage extends BaseStatelessPage {
   @override
   Widget initChild() {
     // TODO: implement initChild
+    return WillPopScope(
+        child: buildBody(),
+        onWillPop: () {
+          if (_bloc.showCart == true) {
+            _bloc.changeShowCart();
+            return Future.value(false);
+          } else {
+            return Future.value(true);
+          }
+        });
+  }
+
+  Stack buildBody() {
     return Stack(
       children: <Widget>[
         Column(
@@ -216,7 +229,34 @@ class GoodListPage extends BaseStatelessPage {
                                       child: ListView.builder(
                                         shrinkWrap: true,
                                         itemBuilder: (ctx, index) => createItem(
-                                            GoodsListData("测试")..numList = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1], index,
+                                            GoodsListData("测试")
+                                              ..numList = [
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1,
+                                                1
+                                              ],
+                                            index,
                                             isCart: true),
                                         itemCount: 10,
                                       ),
@@ -289,20 +329,23 @@ class GoodListPage extends BaseStatelessPage {
                         ],
                       ),
                     ),
-                    GestureDetector(behavior: HitTestBehavior.translucent,child: Container(
-                      alignment: Alignment.center,
-                      margin: EdgeInsets.only(top: 0),
-                      height: 40,
-                      padding: EdgeInsets.symmetric(horizontal: 40),
-                      color: Colors.blueAccent,
-                      child: Text(
-                        "去结算",
-                        style: TextStyle(color: Colors.white, fontSize: 16),
+                    GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      child: Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(top: 0),
+                        height: 40,
+                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        color: Colors.blueAccent,
+                        child: Text(
+                          "去结算",
+                          style: TextStyle(color: Colors.white, fontSize: 16),
+                        ),
                       ),
-                    ),onTap: (){
-                      startPage(OrderCheck());
-                    },)
-
+                      onTap: () {
+                        startPage(OrderCheck());
+                      },
+                    )
                   ],
                 ),
                 color: Colors.black54,
